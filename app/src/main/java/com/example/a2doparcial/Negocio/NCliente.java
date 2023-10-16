@@ -11,14 +11,58 @@ public class NCliente {
     DCliente dc;
     EliminarTemplate dct;
 
+    public NCliente(){}
+
     public  NCliente(Context contexto){
         this.dc=new DCliente(contexto);
         this.dct=new DCliente(contexto);
     }
 
+    public boolean validacionesAgregar(String nombre, String telefono, String direccion){
+        boolean resultado = true;
+
+        if(nombre == null || nombre.isEmpty() || nombre.trim().isEmpty()){
+            resultado = false;
+            return resultado;
+        }
+
+        if(direccion == null || direccion.isEmpty() || direccion.trim().isEmpty()){
+            resultado = false;
+            return resultado;
+        }
+
+        if(telefono == null || telefono.isEmpty() || telefono.trim().isEmpty()){
+            resultado = false;
+            return resultado;
+        }
+
+        return resultado;
+    }
+
+    public boolean validacionesEditar(String nombre, String telefono, String direccion){
+        boolean resultado = true;
+
+        if(nombre == null || nombre.isEmpty() || nombre.trim().isEmpty()){
+            resultado = false;
+            return resultado;
+        }
+
+        if(direccion == null || direccion.isEmpty() || direccion.trim().isEmpty()){
+            resultado = false;
+            return resultado;
+        }
+
+        if(telefono == null || telefono.isEmpty() || telefono.trim().isEmpty()){
+            resultado = false;
+            return resultado;
+        }
+
+        return resultado;
+    }
+
     public long agregar(String nombre,String telefono, String direccion){
         long i=0;
-        if(!nombre.isEmpty() && !telefono.isEmpty() && !direccion.isEmpty()) {
+        if(validacionesAgregar(nombre, telefono, direccion)) {
             i = dc.agregar(nombre,telefono,direccion);
         }
         return i;
@@ -34,7 +78,7 @@ public class NCliente {
 
     public boolean editarClente(int id,String nombre,String telefono,String direccion){
         boolean b=false;
-        if(!nombre.isEmpty() && !telefono.isEmpty() && !direccion.isEmpty()){
+        if(validacionesEditar(nombre, telefono, direccion)){
             return dc.editarCliente(id,nombre,telefono,direccion);
         }
         return b;

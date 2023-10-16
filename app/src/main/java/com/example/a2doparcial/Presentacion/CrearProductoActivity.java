@@ -30,8 +30,8 @@ import java.util.List;
 
 public class CrearProductoActivity extends AppCompatActivity {
 
-    Button btnSeleccionarImagen,btnInsertarProducto;
-    EditText txtNombreProducto,txtPrecioProducto;
+    Button btnSeleccionarImagen, btnInsertarProducto;
+    EditText txtNombreProducto, txtPrecioProducto;
     Spinner spinnerCategoria;
     ImageView imagenProductoInsertar;
     int id_categoria;
@@ -43,18 +43,18 @@ public class CrearProductoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_producto);
 
-        np=new NProducto(CrearProductoActivity.this);
-        nc=new NCategoria(CrearProductoActivity.this);// para traer las categorias
+        np = new NProducto(CrearProductoActivity.this);
+        nc = new NCategoria(CrearProductoActivity.this);// para traer las categorias
 
-        btnInsertarProducto=findViewById(R.id.btnEliminarProducto);
-        btnSeleccionarImagen=findViewById(R.id.btnEditarProducto);
+        btnInsertarProducto = findViewById(R.id.btnEliminarProducto);
+        btnSeleccionarImagen = findViewById(R.id.btnEditarProducto);
 
-        txtNombreProducto=findViewById(R.id.txtEditNombreProducto);
-        txtPrecioProducto=findViewById(R.id.txtEditPrecioProducto);
+        txtNombreProducto = findViewById(R.id.txtEditNombreProducto);
+        txtPrecioProducto = findViewById(R.id.txtEditPrecioProducto);
 
-        imagenProductoInsertar=findViewById(R.id.imageProductoEdit);
+        imagenProductoInsertar = findViewById(R.id.imageProductoEdit);
 
-        spinnerCategoria=findViewById(R.id.spinnerCategoria);
+        spinnerCategoria = findViewById(R.id.spinnerCategoria);
         llenarSpiner();
 
 
@@ -69,23 +69,22 @@ public class CrearProductoActivity extends AppCompatActivity {
         //=================================================
 
 
-
         //================INSERTAR PRODUCTO==============
         btnInsertarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long i=0;
-                i= np.agregar(txtNombreProducto.getText().toString(),
-                        Double.parseDouble(txtPrecioProducto.getText().toString()),
+                long i = 0;
+                i = np.agregar(txtNombreProducto.getText().toString(),
+                        txtPrecioProducto.getText().toString(),
                         imagenByte(imagenProductoInsertar),
                         id_categoria);
 
-                if (i!=0){
+                if (i != 0) {
                     txtNombreProducto.setText("");
                     txtPrecioProducto.setText("");
                     Toast.makeText(CrearProductoActivity.this, "Se inserto un Producto correctamente", Toast.LENGTH_SHORT).show();
                     actualizar();
-                }else{
+                } else {
                     Toast.makeText(CrearProductoActivity.this, "Error al insertar Producto", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -94,8 +93,8 @@ public class CrearProductoActivity extends AppCompatActivity {
         //=================================================
     }
 
-    private void llenarSpiner(){
-        ArrayAdapter<DCategoria> adaptador= new ArrayAdapter<DCategoria>(CrearProductoActivity.this,
+    private void llenarSpiner() {
+        ArrayAdapter<DCategoria> adaptador = new ArrayAdapter<DCategoria>(CrearProductoActivity.this,
                 android.R.layout.simple_spinner_item, nc.getListaCategorias());
 
         adaptador.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
@@ -104,7 +103,7 @@ public class CrearProductoActivity extends AppCompatActivity {
         spinnerCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                id_categoria=((DCategoria)adapterView.getSelectedItem()).getId();
+                id_categoria = ((DCategoria) adapterView.getSelectedItem()).getId();
             }
 
             @Override
@@ -116,7 +115,7 @@ public class CrearProductoActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == 99 && resultCode == RESULT_OK && data != null){
+        if (requestCode == 99 && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
@@ -130,9 +129,9 @@ public class CrearProductoActivity extends AppCompatActivity {
     }
 
     public static byte[] imagenByte(ImageView image) {
-        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        Bitmap redimensionada=Bitmap.createScaledBitmap(bitmap,300,400,true);
+        Bitmap redimensionada = Bitmap.createScaledBitmap(bitmap, 300, 400, true);
         redimensionada.compress(Bitmap.CompressFormat.PNG, 70, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
@@ -149,13 +148,13 @@ public class CrearProductoActivity extends AppCompatActivity {
         }
     }
 
-    public List<DCategoria> getCategorias(){
-        List<DCategoria> categorias= new ArrayList<>();
-        categorias=nc.getListaCategorias();
+    public List<DCategoria> getCategorias() {
+        List<DCategoria> categorias = new ArrayList<>();
+        categorias = nc.getListaCategorias();
         return categorias;
     }
 
-    public void actualizar(){
+    public void actualizar() {
         Intent intent = new Intent(this, ProductoActivity.class);
         startActivity(intent);
     }

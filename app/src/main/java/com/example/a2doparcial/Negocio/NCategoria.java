@@ -12,14 +12,25 @@ public class NCategoria {
     DCategoria dc;
     EliminarTemplate dct;
 
+    public NCategoria(){};
+
     public  NCategoria(Context contexto){
         this.dc=new DCategoria(contexto);
         this.dct=new DCategoria(contexto); // este es el objeto que reerencia al conexto
     }
 
+    public boolean agregarValidaciones(String nombre){
+        boolean resultado = true;
+        if(nombre.isEmpty()){
+            resultado = false;
+            return resultado;
+        }
+        return resultado;
+    }
+
     public long agregar(String nombre){
         long i=0;
-        if(!nombre.isEmpty()) {
+        if(agregarValidaciones(nombre)) {
             //dc = new DCategoria(this.contexto);
             i = dc.agregar(nombre);
             if(i==0){
@@ -39,9 +50,18 @@ public class NCategoria {
         return dc.getCategoria(id);
     }
 
+    public boolean editarValidaciones(String nombre){
+        boolean resultado = true;
+        if(nombre == null || nombre.isEmpty()){
+            resultado = false;
+            return resultado;
+        }
+        return resultado;
+    }
+
     public boolean editarCategoria(int id,String nombre){
         boolean b=false;
-        if(!nombre.isEmpty()){
+        if(editarValidaciones(nombre)){
             return dc.editarCategoria(id,nombre);
         }
         return b;

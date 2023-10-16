@@ -21,8 +21,8 @@ import java.util.ArrayList;
 
 public class RepartidorActivity extends AppCompatActivity {
 
-    EditText txtNombreRepartidor,txtTelefonoRepartidor,txtPlacaRepartidor;
-    Button btnGuardarRepartidor,btnHomeRepartidor;
+    EditText txtNombreRepartidor, txtTelefonoRepartidor, txtPlacaRepartidor;
+    Button btnGuardarRepartidor, btnHomeRepartidor;
     RecyclerView listaRepartidor;
     NRepartidor nr;
 
@@ -33,24 +33,23 @@ public class RepartidorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repartidor);
 
-        nr=new NRepartidor(RepartidorActivity.this);
+        nr = new NRepartidor(RepartidorActivity.this);
 
-        txtNombreRepartidor=findViewById(R.id.txtNombreRepartidor);
-        txtTelefonoRepartidor=findViewById(R.id.txtTelefonoRepartidor);
-        txtPlacaRepartidor=findViewById(R.id.txtPlacaRepartidor);
+        txtNombreRepartidor = findViewById(R.id.txtNombreRepartidor);
+        txtTelefonoRepartidor = findViewById(R.id.txtTelefonoRepartidor);
+        txtPlacaRepartidor = findViewById(R.id.txtPlacaRepartidor);
 
-        btnGuardarRepartidor=findViewById(R.id.btnGuardarRepartidor);
-        btnHomeRepartidor=findViewById(R.id.btnHomeRepartidor);
+        btnGuardarRepartidor = findViewById(R.id.btnGuardarRepartidor);
+        btnHomeRepartidor = findViewById(R.id.btnHomeRepartidor);
 
-        listaRepartidor=findViewById(R.id.listaRepartidor);
+        listaRepartidor = findViewById(R.id.listaRepartidor);
         listaRepartidor.setLayoutManager(new LinearLayoutManager(RepartidorActivity.this));
 
-        listaArrayRepartidor=new ArrayList<>();
-
+        listaArrayRepartidor = new ArrayList<>();
 
 
         //================MOSTRAR CLIENTES=================
-        RepartidorA adapter=new RepartidorA(nr.getListaRepartidor());
+        RepartidorA adapter = new RepartidorA(nr.getListaRepartidor());
         listaRepartidor.setAdapter(adapter);
         //=================================================
 
@@ -58,18 +57,18 @@ public class RepartidorActivity extends AppCompatActivity {
         btnGuardarRepartidor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long i=0;
-                i= nr.agregar(txtNombreRepartidor.getText().toString(),
+                long i = 0;
+                i = nr.agregar(txtNombreRepartidor.getText().toString(),
                         txtTelefonoRepartidor.getText().toString(),
                         txtPlacaRepartidor.getText().toString());
 
-                if (i!=0){
+                if (i != 0) {
                     txtNombreRepartidor.setText("");
                     txtTelefonoRepartidor.setText("");
                     txtPlacaRepartidor.setText("");
                     Toast.makeText(RepartidorActivity.this, "Se inserto un Repartidor correctamente", Toast.LENGTH_SHORT).show();
                     actualizar();
-                }else{
+                } else {
                     Toast.makeText(RepartidorActivity.this, "Error al insertar Repartidor", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -79,14 +78,14 @@ public class RepartidorActivity extends AppCompatActivity {
         btnHomeRepartidor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(), MainActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             }
         });
         //============================================================
     }
 
-    public void actualizar(){
+    public void actualizar() {
         Intent intent = new Intent(this, RepartidorActivity.class);
         startActivity(intent);
     }
