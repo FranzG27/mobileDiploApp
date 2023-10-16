@@ -70,26 +70,6 @@ public class Conexion extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        // sqLiteDatabase.execSQL("DROP TABLE " + CATEGORIA);
         onCreate(sqLiteDatabase);
-        //sqLiteDatabase.execSQL(PRODUCTO);
-        //sqLiteDatabase.execSQL(COTIZACION);
-        //sqLiteDatabase.execSQL(DETALLE);
-
-        //sqLiteDatabase.execSQL("DROP TABLE " + CATEGORIA);
-        //sqLiteDatabase.execSQL(CATEGORIA);
-        // onCreate(sqLiteDatabase);
-
-        //sqLiteDatabase.execSQL("DROP TABLE " + TIPO);
-        // sqLiteDatabase.execSQL(TIPO);
-        //onCreate(sqLiteDatabase);
-
-        //sqLiteDatabase.execSQL("DROP TABLE " + CLIENTE);
-        //sqLiteDatabase.execSQL(CLIENTE);
-        //onCreate(sqLiteDatabase);
-
-        //sqLiteDatabase.execSQL("DROP TABLE " + REPARTIDOR);
-        //sqLiteDatabase.execSQL(REPARTIDOR);
-        // onCreate(sqLiteDatabase);
     }
 }
