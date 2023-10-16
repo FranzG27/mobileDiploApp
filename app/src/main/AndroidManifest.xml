@@ -22,9 +22,6 @@
         android:theme="@style/Theme.2doParcial"
         tools:targetApi="31">
         <activity
-            android:name=".Presentacion.CotizacionActivity"
-            android:exported="false" />
-        <activity
             android:name=".Presentacion.EnviarMsgActivity"
             android:exported="false" />
         <activity

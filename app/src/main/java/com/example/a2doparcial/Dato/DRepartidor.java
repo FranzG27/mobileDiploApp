@@ -12,7 +12,7 @@ import com.example.a2doparcial.Conexion.Conexion;
 import java.util.ArrayList;
 
 public class DRepartidor extends EliminarTemplate{
-    Conexion BaseDatos;//=new conexion(contexto);
+    Conexion baseDatos;//=new conexion(contexto);
     private SQLiteDatabase db;
     private String nombreTabla;
 
@@ -27,7 +27,7 @@ public class DRepartidor extends EliminarTemplate{
     }
 
     public DRepartidor(Context context) {
-        this.BaseDatos = new Conexion(context);
+        this.baseDatos = new Conexion(context);
         this.nombreTabla = "REPARTIDOR";
     }
 
@@ -76,7 +76,7 @@ public class DRepartidor extends EliminarTemplate{
     public long agregar(String nombre,String telefono, String placa){
         long i=0;
         try{
-            db = BaseDatos.getWritableDatabase();
+            db = baseDatos.getWritableDatabase();
 
             if (db != null) {
                 ContentValues values = new ContentValues();
@@ -98,7 +98,7 @@ public class DRepartidor extends EliminarTemplate{
 
     //=====================MOSTRAR CLIENTES===========================
     public ArrayList<DRepartidor> getListaRepartidores(){
-        db = BaseDatos.getWritableDatabase();
+        db = baseDatos.getWritableDatabase();
         ArrayList<DRepartidor> listaRepartidor=new ArrayList<>();
         DRepartidor repartidor=null;
         Cursor cursorRepartidor=null;
@@ -126,7 +126,7 @@ public class DRepartidor extends EliminarTemplate{
 
     //========================Ver 1 Repartidor===========================
     public DRepartidor getRepartidor(int id){
-        db = BaseDatos.getWritableDatabase();
+        db = baseDatos.getWritableDatabase();
         DRepartidor repartidor=null;
         Cursor cursorRepartidor=null;
 
@@ -150,7 +150,7 @@ public class DRepartidor extends EliminarTemplate{
 
     public boolean editarRepartidor(int id,String nombre,String telefono,String placa){
         boolean b=false;
-        db = BaseDatos.getWritableDatabase();
+        db = baseDatos.getWritableDatabase();
 
         try{
             db.execSQL("UPDATE "+nombreTabla+" SET NOMBRE = '" + nombre +"' WHERE id='"+ id+ "' ");
@@ -169,9 +169,9 @@ public class DRepartidor extends EliminarTemplate{
 
 
     //======================ELIMINAR==================================
-    public boolean eliminarRepartidor(int id){
+   /* public boolean eliminarRepartidor(int id){
         boolean b=false;
-        db = BaseDatos.getWritableDatabase();
+        db = baseDatos.getWritableDatabase();
 
         try{
             db.execSQL("DELETE FROM " + nombreTabla + " WHERE ID = '" + id + "'");
@@ -183,7 +183,7 @@ public class DRepartidor extends EliminarTemplate{
             db.close();
         }
         return b;
-    }
+    }*/
     //================================================================
 
     //==============OPERACION PARA ELIMINAR CON EL PATRON TEMPLATE================
@@ -194,7 +194,7 @@ public class DRepartidor extends EliminarTemplate{
 
     @Override
     public Conexion getBaseDatos(){
-        return this.BaseDatos;
+        return this.baseDatos;
     }
     //=============================================================================
 

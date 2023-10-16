@@ -13,7 +13,7 @@ import com.example.a2doparcial.Conexion.Conexion;
 import java.util.ArrayList;
 
 public class DCliente extends EliminarTemplate{
-    Conexion BaseDatos;//=new conexion(contexto);
+    Conexion baseDatos;//=new conexion(contexto);
     private SQLiteDatabase db;
     private String nombreTabla;
 
@@ -28,7 +28,7 @@ public class DCliente extends EliminarTemplate{
     }
 
     public DCliente(Context context) {
-        this.BaseDatos = new Conexion(context);
+        this.baseDatos = new Conexion(context);
         this.nombreTabla = "CLIENTE";
     }
 
@@ -78,7 +78,7 @@ public class DCliente extends EliminarTemplate{
     public long agregar(String nombre,String telefono, String direccion){
         long i=0;
         try{
-            db = BaseDatos.getWritableDatabase();
+            db = baseDatos.getWritableDatabase();
 
             if (db != null) {
                 ContentValues values = new ContentValues();
@@ -100,7 +100,7 @@ public class DCliente extends EliminarTemplate{
 
     //=====================MOSTRAR CLIENTES===========================
     public ArrayList<DCliente> getListaClientes(){
-        db = BaseDatos.getWritableDatabase();
+        db = baseDatos.getWritableDatabase();
         ArrayList<DCliente> listaCliente=new ArrayList<>();
         DCliente cliente=null;
         Cursor cursorCliente=null;
@@ -128,7 +128,7 @@ public class DCliente extends EliminarTemplate{
 
     //========================Ver 1 Cliente===========================
     public DCliente getCliente(int id){
-        db = BaseDatos.getWritableDatabase();
+        db = baseDatos.getWritableDatabase();
         DCliente cliente=null;
         Cursor cursorCliente=null;
 
@@ -152,7 +152,7 @@ public class DCliente extends EliminarTemplate{
 
     public boolean editarCliente(int id,String nombre,String telefono,String direccion){
         boolean b=false;
-        db = BaseDatos.getWritableDatabase();
+        db = baseDatos.getWritableDatabase();
 
         try{
             db.execSQL("UPDATE "+nombreTabla+" SET NOMBRE = '" + nombre +"' WHERE id='"+ id+ "' ");
@@ -180,7 +180,7 @@ public class DCliente extends EliminarTemplate{
 
     @Override
     public Conexion getBaseDatos(){
-        return this.BaseDatos;
+        return this.baseDatos;
     }
     //=============================================================================
 

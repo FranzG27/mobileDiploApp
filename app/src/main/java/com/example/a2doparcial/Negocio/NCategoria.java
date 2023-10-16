@@ -20,14 +20,8 @@ public class NCategoria {
     public long agregar(String nombre){
         long i=0;
         if(!nombre.isEmpty()) {
-            //dc = new DCategoria(this.contexto);
-            i = dc.agregar(nombre);
-            if(i==0){
-                // Toast.makeText(contexto, "aqui no pasa en NCategoria", Toast.LENGTH_SHORT).show();
-            }
-            //return i;
+           i= dc.agregar(nombre);
         }
-        // return i=0;
         return i;
     }
 
@@ -48,9 +42,6 @@ public class NCategoria {
     }
 
     public boolean eliminarCategoria(int id){
-        //EliminarTemplate dct;
-        // dct=new DCategoria();
-
         return dct.eliminarTupla(id);
     }
 

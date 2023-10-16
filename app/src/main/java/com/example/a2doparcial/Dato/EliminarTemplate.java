@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.a2doparcial.Conexion.Conexion;
 
 public abstract class EliminarTemplate {
-    Conexion BaseDatos;//=new conexion(contexto);
+    Conexion baseDatos;//=new conexion(contexto);
     private SQLiteDatabase db;
     // Metodo Template
     public boolean eliminarTupla(int id){
-        BaseDatos=getBaseDatos();
+        baseDatos=getBaseDatos();
         boolean b=false;
-        db = BaseDatos.getWritableDatabase();
+        db = baseDatos.getWritableDatabase();
 
         try{
             db.execSQL("DELETE FROM " + getNombreTabla() + " WHERE ID = '" + id + "'");
