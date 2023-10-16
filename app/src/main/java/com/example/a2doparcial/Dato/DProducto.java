@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DProducto implements IProducto{
 
-    Conexion baseDatos;//=new conexion(contexto);
+    Conexion BaseDatos;//=new conexion(contexto);
     private SQLiteDatabase db;
     private String nombreTabla;
 
@@ -27,7 +27,7 @@ public class DProducto implements IProducto{
     }
 
     public DProducto(Context context) {
-        this.baseDatos = new Conexion(context);
+        this.BaseDatos = new Conexion(context);
         this.nombreTabla = "PRODUCTO";
     }
 
@@ -79,7 +79,7 @@ public class DProducto implements IProducto{
         long i=0;
         try{
             //funcion para conseguir la coneccion a la bd
-            db = baseDatos.getWritableDatabase();
+            db = BaseDatos.getWritableDatabase();
 
             if (db != null) {
                 ContentValues values = new ContentValues();
@@ -102,7 +102,7 @@ public class DProducto implements IProducto{
 
     //=====================MOSTRAR PRODUCTOS===========================
     public ArrayList<DProducto> getListaProductos(){
-        db = baseDatos.getWritableDatabase();
+        db = BaseDatos.getWritableDatabase();
         ArrayList<DProducto> listaProductos=new ArrayList<>();
         DProducto producto=null;
         Cursor cursorProducto=null;
@@ -131,7 +131,7 @@ public class DProducto implements IProducto{
 
     //========================Ver 1 Producto===========================
     public DProducto getProducto(int id){
-        db = baseDatos.getWritableDatabase();
+        db = BaseDatos.getWritableDatabase();
         DProducto producto=null;
         Cursor cursorProducto=null;
 
@@ -156,7 +156,7 @@ public class DProducto implements IProducto{
 
     public boolean editarProducto(int id,String nombre,double precio){
         boolean b=false;
-        db = baseDatos.getWritableDatabase();
+        db = BaseDatos.getWritableDatabase();
 
         try{
             db.execSQL("UPDATE "+nombreTabla+" SET NOMBRE = '" + nombre +"' WHERE id='"+ id+ "' ");
@@ -177,7 +177,7 @@ public class DProducto implements IProducto{
     //======================ELIMINAR==================================
     public boolean eliminarProducto(int id){
         boolean b=false;
-        db = baseDatos.getWritableDatabase();
+        db = BaseDatos.getWritableDatabase();
 
         try{
             db.execSQL("DELETE FROM " + nombreTabla + " WHERE ID = '" + id + "'");

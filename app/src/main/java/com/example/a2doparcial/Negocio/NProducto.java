@@ -9,13 +9,23 @@ import com.example.a2doparcial.Dato.EliminarTemplate;
 import java.util.ArrayList;
 
 public class NProducto {
+    //DProducto dp;
+
     DProductoProxy productoProxy;
 
     public  NProducto(Context contexto){
+        //this.dp=new DProducto(contexto);
         this.productoProxy=new DProductoProxy(contexto);
     }
 
+    //Ejercicio antes
     public long agregar(String nombre,double precio, byte[] imagen,int id_categoria){
+        long resultado=productoProxy.agregar(nombre,precio,imagen,id_categoria);
+        return resultado;
+    }
+
+    //Ejercicio despues
+    public long agregar2(String nombre,double precio, byte[] imagen,int id_categoria){
         return productoProxy.agregar(nombre, precio, imagen, id_categoria);
     }
 

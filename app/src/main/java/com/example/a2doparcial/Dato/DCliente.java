@@ -5,13 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+
 import androidx.annotation.NonNull;
 
 import com.example.a2doparcial.Conexion.Conexion;
 
 import java.util.ArrayList;
 
-public class DRepartidor extends EliminarTemplate{
+public class DCliente extends EliminarTemplate{
     Conexion BaseDatos;//=new conexion(contexto);
     private SQLiteDatabase db;
     private String nombreTabla;
@@ -19,16 +20,16 @@ public class DRepartidor extends EliminarTemplate{
     public int id;
     public String nombre;
     public String telefono;
-    public String placa;
+    public String direccion;
 
 
-    public DRepartidor() {
+    public DCliente() {
 
     }
 
-    public DRepartidor(Context context) {
+    public DCliente(Context context) {
         this.BaseDatos = new Conexion(context);
-        this.nombreTabla = "REPARTIDOR";
+        this.nombreTabla = "CLIENTE";
     }
 
     //getters y setters
@@ -55,12 +56,12 @@ public class DRepartidor extends EliminarTemplate{
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    public String getPlaca() {
-        return placa;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setPlaca(String placa) {
-        this.placa =placa ;
+    public void setDireccion(String direccion) {
+        this.direccion =direccion ;
     }
 
     //======Para llenar el spinner===========
@@ -72,8 +73,9 @@ public class DRepartidor extends EliminarTemplate{
     //=======================================
 
 
+
     //=========================AGREGAR=========================
-    public long agregar(String nombre,String telefono, String placa){
+    public long agregar(String nombre,String telefono, String direccion){
         long i=0;
         try{
             db = BaseDatos.getWritableDatabase();
@@ -82,7 +84,7 @@ public class DRepartidor extends EliminarTemplate{
                 ContentValues values = new ContentValues();
                 values.put("nombre", nombre);//copy
                 values.put("telefono", telefono);
-                values.put("placa", placa);
+                values.put("direccion", direccion);
 
                 i= db.insert(nombreTabla, null, values);
                 db.close();
@@ -97,65 +99,65 @@ public class DRepartidor extends EliminarTemplate{
     //=================================================================
 
     //=====================MOSTRAR CLIENTES===========================
-    public ArrayList<DRepartidor> getListaRepartidores(){
+    public ArrayList<DCliente> getListaClientes(){
         db = BaseDatos.getWritableDatabase();
-        ArrayList<DRepartidor> listaRepartidor=new ArrayList<>();
-        DRepartidor repartidor=null;
-        Cursor cursorRepartidor=null;
+        ArrayList<DCliente> listaCliente=new ArrayList<>();
+        DCliente cliente=null;
+        Cursor cursorCliente=null;
 
-        cursorRepartidor=db.rawQuery("SELECT * FROM "+nombreTabla,null);
+        cursorCliente=db.rawQuery("SELECT * FROM "+nombreTabla,null);
 
-        if (cursorRepartidor.moveToFirst()){
+        if (cursorCliente.moveToFirst()){
             do {
-                repartidor=new DRepartidor();
-                repartidor.setId(cursorRepartidor.getInt(0));
-                repartidor.setNombre(cursorRepartidor.getString(1));
-                repartidor.setTelefono(cursorRepartidor.getString(2));
-                repartidor.setPlaca(cursorRepartidor.getString(3));
-                listaRepartidor.add(repartidor);
+                cliente=new DCliente();
+                cliente.setId(cursorCliente.getInt(0));
+                cliente.setNombre(cursorCliente.getString(1));
+                cliente.setTelefono(cursorCliente.getString(2));
+                cliente.setDireccion(cursorCliente.getString(3));
+                listaCliente.add(cliente);
 
-            }while (cursorRepartidor.moveToNext());
+            }while (cursorCliente.moveToNext());
         }
-        cursorRepartidor.close();
+        cursorCliente.close();
         db.close();                     //aqui puede ser el error
-        return listaRepartidor;
+        return listaCliente;
 
     }
 
     //================================================================
 
-    //========================Ver 1 Repartidor===========================
-    public DRepartidor getRepartidor(int id){
+    //========================Ver 1 Cliente===========================
+    public DCliente getCliente(int id){
         db = BaseDatos.getWritableDatabase();
-        DRepartidor repartidor=null;
-        Cursor cursorRepartidor=null;
+        DCliente cliente=null;
+        Cursor cursorCliente=null;
 
-        cursorRepartidor=db.rawQuery("SELECT * FROM "+nombreTabla + " WHERE ID =" + id + " LIMIT 1",null);
+        cursorCliente=db.rawQuery("SELECT * FROM "+nombreTabla + " WHERE ID =" + id + " LIMIT 1",null);
 
-        if (cursorRepartidor.moveToFirst()){
-            repartidor=new DRepartidor();
-            repartidor.setId(cursorRepartidor.getInt(0));
-            repartidor.setNombre(cursorRepartidor.getString(1));
-            repartidor.setTelefono(cursorRepartidor.getString(2));
-            repartidor.setPlaca(cursorRepartidor.getString(3));
+        if (cursorCliente.moveToFirst()){
+            cliente=new DCliente();
+            cliente.setId(cursorCliente.getInt(0));
+            cliente.setNombre(cursorCliente.getString(1));
+            cliente.setTelefono(cursorCliente.getString(2));
+            cliente.setDireccion(cursorCliente.getString(3));
         }
-        cursorRepartidor.close();
+        cursorCliente.close();
         db.close();
-        return repartidor;
+        return cliente;
 
     }
     //================================================================
 
     //===========================EDITAR===============================
 
-    public boolean editarRepartidor(int id,String nombre,String telefono,String placa){
+    public boolean editarCliente(int id,String nombre,String telefono,String direccion){
         boolean b=false;
         db = BaseDatos.getWritableDatabase();
 
         try{
             db.execSQL("UPDATE "+nombreTabla+" SET NOMBRE = '" + nombre +"' WHERE id='"+ id+ "' ");
             db.execSQL("UPDATE "+nombreTabla+" SET TELEFONO = '" + telefono +"' WHERE id='"+ id+ "' ");
-            db.execSQL("UPDATE "+nombreTabla+" SET PLACA = '" + placa +"' WHERE id='"+ id+ "' ");
+            db.execSQL("UPDATE "+nombreTabla+" SET DIRECCION = '" + direccion +"' WHERE id='"+ id+ "' ");
             b=true;
         }catch (Exception e){
             e.toString();
@@ -168,22 +170,6 @@ public class DRepartidor extends EliminarTemplate{
     //================================================================
 
 
-    //======================ELIMINAR==================================
-    public boolean eliminarRepartidor(int id){
-        boolean b=false;
-        db = BaseDatos.getWritableDatabase();
-
-        try{
-            db.execSQL("DELETE FROM " + nombreTabla + " WHERE ID = '" + id + "'");
-            b=true;
-        }catch (Exception e){
-            e.toString();
-            b=false;
-        }finally {
-            db.close();
-        }
-        return b;
-    }
     //================================================================
 
     //==============OPERACION PARA ELIMINAR CON EL PATRON TEMPLATE================

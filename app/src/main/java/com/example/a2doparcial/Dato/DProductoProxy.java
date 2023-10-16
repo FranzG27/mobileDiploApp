@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class DProductoProxy implements IProducto{
 
     private DProducto dp;
-    private EliminarTemplate dct;
 
     public DProductoProxy(Context context){
         this.dp=new DProducto(context);

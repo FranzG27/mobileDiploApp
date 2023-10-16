@@ -68,6 +68,9 @@ public class CrearProductoActivity extends AppCompatActivity {
 
         //=================================================
 
+
+
+        //================INSERTAR PRODUCTO==============
         btnInsertarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +90,8 @@ public class CrearProductoActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //=================================================
     }
 
     private void llenarSpiner(){

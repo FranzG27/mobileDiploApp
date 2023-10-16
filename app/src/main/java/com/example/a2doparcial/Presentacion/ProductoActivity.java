@@ -58,6 +58,7 @@ public class ProductoActivity extends AppCompatActivity {
         });
         //============================================================
 
+        //=====================boton Crear Producto=============================
         btnCrearProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +66,9 @@ public class ProductoActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        //============================================================
 
+        //=====================boton Generar Catalogo=============================
         btnGenerarCatalogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +76,7 @@ public class ProductoActivity extends AppCompatActivity {
                 catalagoFacade.compartirPDF();
             }
         });
+        //============================================================
     }
 
 }

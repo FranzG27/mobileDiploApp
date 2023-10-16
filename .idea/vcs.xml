@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-<<<<<<< HEAD
-    <mapping directory="$PROJECT_DIR$/mobileDiploApp" vcs="Git" />
-=======
->>>>>>> de85bcd77ca9fbe54a2ae92fa4e2c711c342be2a
   </component>
 </project>
