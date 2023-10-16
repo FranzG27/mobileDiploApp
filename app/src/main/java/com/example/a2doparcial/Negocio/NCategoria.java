@@ -14,20 +14,19 @@ public class NCategoria {
 
     public  NCategoria(Context contexto){
         this.dc=new DCategoria(contexto);
-        this.dct=new DCategoria(contexto); // este es el objeto que reerencia al conexto
+        this.dct=new DCategoria(contexto); 
     }
 
-    public long agregar(String nombre){
+    public long agregarCategoria(String nombre){
         long i=0;
         if(!nombre.isEmpty()) {
-            //dc = new DCategoria(this.contexto);
-            i = dc.agregar(nombre);
+           
+            i = dc.agregarCategoria(nombre);
             if(i==0){
-                // Toast.makeText(contexto, "aqui no pasa en NCategoria", Toast.LENGTH_SHORT).show();
+                
             }
-            //return i;
+            
         }
-        // return i=0;
         return i;
     }
 
@@ -48,8 +47,7 @@ public class NCategoria {
     }
 
     public boolean eliminarCategoria(int id){
-        //EliminarTemplate dct;
-        // dct=new DCategoria();
+       
 
         return dct.eliminarTupla(id);
     }

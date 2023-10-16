@@ -31,7 +31,7 @@ public class RepartidorA extends RecyclerView.Adapter<RepartidorA.RepartidorView
     public RepartidorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_item_repartidor,null,false);
         return new RepartidorA.RepartidorViewHolder(view);
-        // return new ClienteA.ClienteViewHolder(view);
+        
     }
 
     @Override

@@ -42,7 +42,9 @@ public class CatalogoFacade {
     }
 
 
-
+    /**
+     * Función que inserta el pedido del cliente en un PDF
+     */
     private void crearPDF() {
         np=new NProducto(activity);
         Document document = new Document();
@@ -64,7 +66,6 @@ public class CatalogoFacade {
                 tabla.addCell( imagen );
                 tabla.addCell("Nombre: " + producto.getNombre());
                 tabla.addCell("Precio Bs: " + Double.toString(producto.getPrecio()));
-                // tabla.addCell("Categoria: " + categoria.getNombre());
             }
             document.add(tabla);
             document.add(new Paragraph(" "));
@@ -89,7 +90,9 @@ public class CatalogoFacade {
         activity.startActivity(Intent.createChooser(compartir, "Catálogo de Productos"));
     }
 
-
+    /**
+     * Función que sirve para compartir en PDF el pedido del cliente
+     */
     public void compartirPDF() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(context.getApplicationContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)

@@ -16,10 +16,10 @@ public class NCliente {
         this.dct=new DCliente(contexto);
     }
 
-    public long agregar(String nombre,String telefono, String direccion){
+    public long agregarCliente(String nombre,String telefono, String direccion){
         long i=0;
         if(!nombre.isEmpty() && !telefono.isEmpty() && !direccion.isEmpty()) {
-            i = dc.agregar(nombre,telefono,direccion);
+            i = dc.agregarCliente(nombre,telefono,direccion);
         }
         return i;
     }

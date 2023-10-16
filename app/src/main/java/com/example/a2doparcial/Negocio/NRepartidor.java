@@ -17,10 +17,10 @@ public class NRepartidor {
         this.drt=new DRepartidor(contexto);
     }
 
-    public long agregar(String nombre,String telefono, String placa){
+    public long agregarRepartidor(String nombre,String telefono, String placa){
         long i=0;
         if(!nombre.isEmpty() && !telefono.isEmpty() && !placa.isEmpty()) {
-            i = dr.agregar(nombre,telefono,placa);
+            i = dr.agregarRepartidor(nombre,telefono,placa);
         }
         return i;
     }

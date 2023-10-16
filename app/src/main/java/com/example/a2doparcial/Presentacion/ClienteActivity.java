@@ -50,19 +50,16 @@ public class ClienteActivity extends AppCompatActivity {
         listaCliente.setLayoutManager(new LinearLayoutManager(ClienteActivity.this));
 
         listaArrayCliente=new ArrayList<>();
-
-        //================MOSTRAR CLIENTES=================
         ClienteA adapter=new ClienteA(nc.getListaClientes());
         listaCliente.setAdapter(adapter);
-        //=================================================
+        
 
-
-        //CLICK EN GUARDAR
+        
         btnGuardarCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 long i=0;
-                i= nc.agregar(txtNombreCliente.getText().toString(),
+                i= nc.agregarCliente(txtNombreCliente.getText().toString(),
                         txtTelefonoCliente.getText().toString(),
                         txtDireccionCliente.getText().toString());
 
@@ -78,7 +75,7 @@ public class ClienteActivity extends AppCompatActivity {
             }
         });
 
-        //=====================boton Home=============================
+       
         btnHomeCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +83,7 @@ public class ClienteActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        //============================================================
+
 
     }
 

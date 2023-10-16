@@ -53,7 +53,7 @@ public class CategoriaActivity extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long i= nc.agregar(txtNombre.getText().toString());
+                long i= nc.agregarCategoria(txtNombre.getText().toString());
                 if (i!=0){
                     txtNombre.setText("");
                     Toast.makeText(CategoriaActivity.this, "Se inserto correctamente", Toast.LENGTH_SHORT).show();
@@ -66,7 +66,7 @@ public class CategoriaActivity extends AppCompatActivity {
 
         });
 
-        //=====================boton Home=============================
+     
         btnHomeCategoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,13 +74,15 @@ public class CategoriaActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        //============================================================
+     
 
     }
-
+    /**
+     * Función que sirve para actualizar los campos del activity
+     */
     public void actualizar(){
         Intent intent = new Intent(this, CategoriaActivity.class);
         startActivity(intent);
     }
-    //
+   
 }

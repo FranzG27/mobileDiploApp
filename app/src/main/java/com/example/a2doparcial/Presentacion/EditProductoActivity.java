@@ -23,7 +23,7 @@ public class EditProductoActivity extends AppCompatActivity {
     Button btnEditarProducto,btnEliminarProducto;
     ImageView imageProducto;
     NProducto np;
-    DProducto producto; //es un tipo de dato(OBJETO)
+    DProducto producto;
     int id=0;
 
     @Override
@@ -43,7 +43,7 @@ public class EditProductoActivity extends AppCompatActivity {
         btnEliminarProducto=findViewById(R.id.btnEliminarProducto);
 
 
-        //-----------Proceso para ver el item seleccionado----------
+      
         if(savedInstanceState ==null){
             Bundle extras=getIntent().getExtras();
             if(extras==null){
@@ -64,9 +64,7 @@ public class EditProductoActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
             imageProducto.setImageBitmap(bitmap);
         }
-        //---------------------------------------------------------------
 
-        //-----------------click boton editar---------------------------
         btnEditarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,9 +78,7 @@ public class EditProductoActivity extends AppCompatActivity {
                 }
             }
         });
-        //------------------------------------------------------------
-
-        //-----------------click Eliminar---------------------------
+    
         btnEliminarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

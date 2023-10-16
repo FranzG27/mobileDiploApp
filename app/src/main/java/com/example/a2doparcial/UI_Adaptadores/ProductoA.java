@@ -39,9 +39,7 @@ public class ProductoA extends RecyclerView.Adapter<ProductoA.ProductoViewHolder
     @Override
     public void onBindViewHolder(@NonNull ProductoViewHolder holder, int position) {
         holder.viewNombreProducto.setText(listaProductos.get(position).getNombre());
-        //String s=Double.toString(d);
-        holder.viewPrecioProducto.setText(Double.toString(listaProductos.get(position).getPrecio()));
-        //holder.viewCategoriaProducto.setText(Integer.toString(listaProductos.get(position).getId_categoria()));
+          holder.viewPrecioProducto.setText(Double.toString(listaProductos.get(position).getPrecio()));
         byte[] foodImage = listaProductos.get(position).getImagen();
         Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
         holder.imageView.setImageBitmap(bitmap);
@@ -61,8 +59,7 @@ public class ProductoA extends RecyclerView.Adapter<ProductoA.ProductoViewHolder
             viewNombreProducto=itemView.findViewById(R.id.viewNombreProducto);
             viewPrecioProducto=itemView.findViewById(R.id.viewPrecioProducto);
             imageView=itemView.findViewById(R.id.imgProducto);
-           // viewCategoriaProducto=itemView.findViewById(R.id.viewCategoriaProducto);
-
+         
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

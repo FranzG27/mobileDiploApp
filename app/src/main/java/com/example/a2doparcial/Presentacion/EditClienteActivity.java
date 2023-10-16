@@ -20,7 +20,7 @@ public class EditClienteActivity extends AppCompatActivity {
     EditText txtNombreClienteEdit,txtTelefonoClienteEdit,txtDireccionClienteEdit;
     Button btnEditarCliente,btnEliminarCliente;
     NCliente nc;
-    DCliente cliente; //no es un instancia si no un tipo de dato
+    DCliente cliente; 
     int id=0;
 
     @Override
@@ -38,7 +38,7 @@ public class EditClienteActivity extends AppCompatActivity {
         btnEliminarCliente=findViewById(R.id.btnEliminarCliente);
 
 
-        //-----------Proceso para ver el item seleccionado----------
+       
         if(savedInstanceState ==null){
             Bundle extras=getIntent().getExtras();
             if(extras==null){
@@ -58,9 +58,6 @@ public class EditClienteActivity extends AppCompatActivity {
         }
 
 
-        //---------------------------------------------------------------
-
-        //-----------------click boton editar---------------------------
         btnEditarCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,11 +73,7 @@ public class EditClienteActivity extends AppCompatActivity {
             }
         });
 
-        //------------------------------------------------------------
-
-
-        //-----------------click Eliminar---------------------------
-        btnEliminarCliente.setOnClickListener(new View.OnClickListener() {
+          btnEliminarCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder buider=new AlertDialog.Builder(EditClienteActivity.this);
@@ -104,8 +97,7 @@ public class EditClienteActivity extends AppCompatActivity {
         });
 
 
-        //----------------------------------------------------------
-
+       
     }
 
     public DCliente getCliente(int id){

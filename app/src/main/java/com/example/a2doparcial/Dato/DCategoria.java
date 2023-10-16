@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
 public class DCategoria extends EliminarTemplate {
-    Conexion BaseDatos;//=new conexion(contexto);
+    Conexion BaseDatos;
     private SQLiteDatabase db;
     private String nombreTabla;
     public int id;
@@ -51,14 +51,17 @@ public class DCategoria extends EliminarTemplate {
         return nombre;
     }
 
-    public long agregar(String nombre) {
+    /**
+     * Función para agregar una Categoría a la Base de Datos
+     */
+    public long agregarCategoria(String nombre) {
         long i = 0;
         try {
             db = BaseDatos.getWritableDatabase();
 
             if (db != null) {
                 ContentValues values = new ContentValues();
-                values.put("nombre", nombre);//copy
+                values.put("nombre", nombre);
 
                 i = db.insert(nombreTabla, null, values);
                 db.close();
@@ -70,7 +73,9 @@ public class DCategoria extends EliminarTemplate {
 
         return i;
     }
-
+    /**
+     * Función para Listar las Categorías que se encuentran en la Base de Datos
+     */
     public ArrayList<DCategoria> getListaCategorias() {
         db = BaseDatos.getWritableDatabase();
         ArrayList<DCategoria> listaCategoria = new ArrayList<>();
@@ -88,13 +93,14 @@ public class DCategoria extends EliminarTemplate {
             } while (cursorCategoria.moveToNext());
         }
         cursorCategoria.close();
-        db.close();                     //aqui puede ser el error
+        db.close();                    
         return listaCategoria;
 
     }
 
-
-    //Editar(consigue solo una categoria seleccionada)
+    /**
+     * Función para traer los datos de una categoría específica
+     */
     public DCategoria getCategoria(int id) {
         db = BaseDatos.getWritableDatabase();
         DCategoria categoria = null;
@@ -113,7 +119,9 @@ public class DCategoria extends EliminarTemplate {
 
     }
 
-    //Editar una categoria
+    /**
+     * Función para editar una categoría específica
+     */
     public boolean editarCategoria(int id, String nombre) {
         boolean b = false;
         db = BaseDatos.getWritableDatabase();
@@ -130,25 +138,9 @@ public class DCategoria extends EliminarTemplate {
         return b;
     }
 
-    //======================ELIMINAR==================================
-    public boolean eliminarCategoria(int id){
-        boolean b=false;
-        db = BaseDatos.getWritableDatabase();
-
-        try{
-            db.execSQL("DELETE FROM " + nombreTabla + " WHERE ID = '" + id + "'");
-            b=true;
-        }catch (Exception e){
-            e.toString();
-            b=false;
-        }finally {
-            db.close();
-        }
-        return b;
-    }
-    //================================================================
-
-    //==============OPERACION PARA ELIMINAR CON EL PATRON TEMPLATE================
+    /**
+     * Operaciones para Eliminar la Categoría con el Patrón Template
+     */
     @Override
     public String getNombreTabla(){
         return nombreTabla;
@@ -158,5 +150,5 @@ public class DCategoria extends EliminarTemplate {
     public Conexion getBaseDatos(){
         return this.BaseDatos;
     }
-    //=============================================================================
+    
 }

@@ -35,9 +35,7 @@ public class CategoriaA extends RecyclerView.Adapter<CategoriaA.CategoriaViewHol
 
     @Override
     public void onBindViewHolder(@NonNull CategoriaViewHolder holder, int position) {
-        //String id=listaCategorias.get(position).getId();
-        //holder.viewId.setText(Integer.toString(listaCategorias.get(position).getId()));
-        holder.viewNombre.setText(listaCategorias.get(position).getNombre());
+          holder.viewNombre.setText(listaCategorias.get(position).getNombre());
     }
 
     @Override

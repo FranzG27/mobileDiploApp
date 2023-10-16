@@ -43,22 +43,15 @@ public class ProductoActivity extends AppCompatActivity {
         listaProductos.setLayoutManager(new LinearLayoutManager(ProductoActivity.this));
 
 
-        //=====================Mostrar productos=============================
         ProductoA adapter=new ProductoA(np.getListaProductos());
         listaProductos.setAdapter(adapter);
-        //===================================================================
-
-        //=====================boton Home=============================
-        btnHomeProducto.setOnClickListener(new View.OnClickListener() {
+          btnHomeProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             }
         });
-        //============================================================
-
-        //=====================boton Crear Producto=============================
         btnCrearProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,9 +59,6 @@ public class ProductoActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        //============================================================
-
-        //=====================boton Generar Catalogo=============================
         btnGenerarCatalogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +66,6 @@ public class ProductoActivity extends AppCompatActivity {
                 catalagoFacade.compartirPDF();
             }
         });
-        //============================================================
-    }
+         }
 
 }

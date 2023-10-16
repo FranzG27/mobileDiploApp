@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Conexion BaseDatos=new Conexion(MainActivity.this);//aqui paso el contexto
+        Conexion BaseDatos=new Conexion(MainActivity.this);
         SQLiteDatabase db=BaseDatos.getWritableDatabase();
 
         if(db!=null){

@@ -13,7 +13,7 @@ import com.example.a2doparcial.Conexion.Conexion;
 import java.util.ArrayList;
 
 public class DCliente extends EliminarTemplate{
-    Conexion BaseDatos;//=new conexion(contexto);
+    Conexion BaseDatos;
     private SQLiteDatabase db;
     private String nombreTabla;
 
@@ -32,7 +32,6 @@ public class DCliente extends EliminarTemplate{
         this.nombreTabla = "CLIENTE";
     }
 
-    //getters y setters
     public int getId() {
         return id;
     }
@@ -64,18 +63,22 @@ public class DCliente extends EliminarTemplate{
         this.direccion =direccion ;
     }
 
-    //======Para llenar el spinner===========
+    /**
+     * Función que sirve para llenar el Spinner
+     */
     @NonNull
     @Override
     public String toString() {
         return nombre;
     }
-    //=======================================
+  
 
 
-
-    //=========================AGREGAR=========================
-    public long agregar(String nombre,String telefono, String direccion){
+    /**
+     * Función para agregar un Cliente a la Base de Datos
+     */
+  
+    public long agregarCliente(String nombre,String telefono, String direccion){
         long i=0;
         try{
             db = BaseDatos.getWritableDatabase();
@@ -96,9 +99,10 @@ public class DCliente extends EliminarTemplate{
 
         return i;
     }
-    //=================================================================
 
-    //=====================MOSTRAR CLIENTES===========================
+    /**
+     * Función para Listar los Clientes que se encuentran en la Base de Datos
+     */
     public ArrayList<DCliente> getListaClientes(){
         db = BaseDatos.getWritableDatabase();
         ArrayList<DCliente> listaCliente=new ArrayList<>();
@@ -119,14 +123,13 @@ public class DCliente extends EliminarTemplate{
             }while (cursorCliente.moveToNext());
         }
         cursorCliente.close();
-        db.close();                     //aqui puede ser el error
+        db.close();                     
         return listaCliente;
 
     }
-
-    //================================================================
-
-    //========================Ver 1 Cliente===========================
+    /**
+     * Función para traer los datos de un Cliente específico
+     */
     public DCliente getCliente(int id){
         db = BaseDatos.getWritableDatabase();
         DCliente cliente=null;
@@ -146,10 +149,12 @@ public class DCliente extends EliminarTemplate{
         return cliente;
 
     }
-    //================================================================
 
-    //===========================EDITAR===============================
 
+ 
+    /**
+     * Función para editar un Cliente específico
+     */
     public boolean editarCliente(int id,String nombre,String telefono,String direccion){
         boolean b=false;
         db = BaseDatos.getWritableDatabase();
@@ -167,12 +172,10 @@ public class DCliente extends EliminarTemplate{
         }
         return b;
     }
-    //================================================================
-
-
-    //================================================================
-
-    //==============OPERACION PARA ELIMINAR CON EL PATRON TEMPLATE================
+ 
+    /**
+     * Operaciones para eliminar el cliente con el Patrón Template
+     */
     @Override
     public String getNombreTabla(){
         return nombreTabla;
@@ -182,6 +185,5 @@ public class DCliente extends EliminarTemplate{
     public Conexion getBaseDatos(){
         return this.BaseDatos;
     }
-    //=============================================================================
-
+    
 }

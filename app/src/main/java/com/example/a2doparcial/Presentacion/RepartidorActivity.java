@@ -49,17 +49,14 @@ public class RepartidorActivity extends AppCompatActivity {
 
 
 
-        //================MOSTRAR CLIENTES=================
         RepartidorA adapter=new RepartidorA(nr.getListaRepartidor());
         listaRepartidor.setAdapter(adapter);
-        //=================================================
-
-        //CLICK EN GUARDAR
+       
         btnGuardarRepartidor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 long i=0;
-                i= nr.agregar(txtNombreRepartidor.getText().toString(),
+                i= nr.agregarRepartidor(txtNombreRepartidor.getText().toString(),
                         txtTelefonoRepartidor.getText().toString(),
                         txtPlacaRepartidor.getText().toString());
 
@@ -75,7 +72,7 @@ public class RepartidorActivity extends AppCompatActivity {
             }
         });
 
-        //=====================boton Home=============================
+
         btnHomeRepartidor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +80,7 @@ public class RepartidorActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        //============================================================
+
     }
 
     public void actualizar(){

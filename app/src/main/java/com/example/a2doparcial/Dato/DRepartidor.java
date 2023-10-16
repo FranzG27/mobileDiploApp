@@ -12,7 +12,7 @@ import com.example.a2doparcial.Conexion.Conexion;
 import java.util.ArrayList;
 
 public class DRepartidor extends EliminarTemplate{
-    Conexion BaseDatos;//=new conexion(contexto);
+    Conexion BaseDatos;
     private SQLiteDatabase db;
     private String nombreTabla;
 
@@ -31,7 +31,7 @@ public class DRepartidor extends EliminarTemplate{
         this.nombreTabla = "REPARTIDOR";
     }
 
-    //getters y setters
+
     public int getId() {
         return id;
     }
@@ -63,24 +63,28 @@ public class DRepartidor extends EliminarTemplate{
         this.placa =placa ;
     }
 
-    //======Para llenar el spinner===========
+    /**
+     * Función que sirve para llenar el Spinner
+     */
     @NonNull
     @Override
     public String toString() {
         return nombre;
     }
-    //=======================================
+    
 
 
-    //=========================AGREGAR=========================
-    public long agregar(String nombre,String telefono, String placa){
+    /**
+     * Función que sirve para agregar un Repartidor a la Base de Datos
+     */
+    public long agregarRepartidor(String nombre,String telefono, String placa){
         long i=0;
         try{
             db = BaseDatos.getWritableDatabase();
 
             if (db != null) {
                 ContentValues values = new ContentValues();
-                values.put("nombre", nombre);//copy
+                values.put("nombre", nombre);
                 values.put("telefono", telefono);
                 values.put("placa", placa);
 
@@ -94,9 +98,9 @@ public class DRepartidor extends EliminarTemplate{
 
         return i;
     }
-    //=================================================================
-
-    //=====================MOSTRAR CLIENTES===========================
+    /**
+     * Función que sirve para listar los Repartidores que se encuentran dentro de la Base de Datos
+     */
     public ArrayList<DRepartidor> getListaRepartidores(){
         db = BaseDatos.getWritableDatabase();
         ArrayList<DRepartidor> listaRepartidor=new ArrayList<>();
@@ -117,15 +121,14 @@ public class DRepartidor extends EliminarTemplate{
             }while (cursorRepartidor.moveToNext());
         }
         cursorRepartidor.close();
-        db.close();                     //aqui puede ser el error
+        db.close();                   
         return listaRepartidor;
 
     }
-
-    //================================================================
-
-    //========================Ver 1 Repartidor===========================
-    public DRepartidor getRepartidor(int id){
+    /**
+     * Función que sirve para devolver los datos de un Repartidor en específico
+     */
+      public DRepartidor getRepartidor(int id){
         db = BaseDatos.getWritableDatabase();
         DRepartidor repartidor=null;
         Cursor cursorRepartidor=null;
@@ -144,10 +147,9 @@ public class DRepartidor extends EliminarTemplate{
         return repartidor;
 
     }
-    //================================================================
-
-    //===========================EDITAR===============================
-
+    /**
+     * Función que sirve para Editar los datos de un Repartidor específico
+     */
     public boolean editarRepartidor(int id,String nombre,String telefono,String placa){
         boolean b=false;
         db = BaseDatos.getWritableDatabase();
@@ -165,28 +167,10 @@ public class DRepartidor extends EliminarTemplate{
         }
         return b;
     }
-    //================================================================
+        /**
+         * Operaciones para eliminar el Repartidor con el Patron Template
+         */
 
-
-    //======================ELIMINAR==================================
-    public boolean eliminarRepartidor(int id){
-        boolean b=false;
-        db = BaseDatos.getWritableDatabase();
-
-        try{
-            db.execSQL("DELETE FROM " + nombreTabla + " WHERE ID = '" + id + "'");
-            b=true;
-        }catch (Exception e){
-            e.toString();
-            b=false;
-        }finally {
-            db.close();
-        }
-        return b;
-    }
-    //================================================================
-
-    //==============OPERACION PARA ELIMINAR CON EL PATRON TEMPLATE================
     @Override
     public String getNombreTabla(){
         return nombreTabla;
@@ -196,6 +180,6 @@ public class DRepartidor extends EliminarTemplate{
     public Conexion getBaseDatos(){
         return this.BaseDatos;
     }
-    //=============================================================================
+ 
 
 }

@@ -19,7 +19,7 @@ public class EditCategoriaActivity extends AppCompatActivity {
     EditText txtNombreEdit;
     Button btnEditar,btnEliminar;
     NCategoria nc;
-    DCategoria categoria; //no es un instancia si no un tipo de dato
+    DCategoria categoria; 
     int id=0;
 
 
@@ -35,8 +35,7 @@ public class EditCategoriaActivity extends AppCompatActivity {
         btnEliminar=findViewById(R.id.btnEliminar);
 
 
-        //-----------Proceso para ver el item seleccionado----------
-        if(savedInstanceState ==null){
+          if(savedInstanceState ==null){
             Bundle extras=getIntent().getExtras();
             if(extras==null){
                 id=Integer.parseInt(null);
@@ -53,9 +52,7 @@ public class EditCategoriaActivity extends AppCompatActivity {
         }
 
 
-        //---------------------------------------------------------------
-        //-----------------click boton editar---------------------------
-        btnEditar.setOnClickListener(new View.OnClickListener() {
+         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean b=nc.editarCategoria(id,txtNombreEdit.getText().toString());
@@ -68,11 +65,7 @@ public class EditCategoriaActivity extends AppCompatActivity {
             }
         });
 
-        //------------------------------------------------------------
-
-
-        //-----------------click Eliminar---------------------------
-        btnEliminar.setOnClickListener(new View.OnClickListener() {
+         btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder buider=new AlertDialog.Builder(EditCategoriaActivity.this);
@@ -96,7 +89,7 @@ public class EditCategoriaActivity extends AppCompatActivity {
         });
 
 
-        //----------------------------------------------------------
+        
     }
     public DCategoria getCategoria(int id){
         return nc.getCategoria(id);

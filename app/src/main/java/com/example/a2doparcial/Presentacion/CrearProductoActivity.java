@@ -44,7 +44,7 @@ public class CrearProductoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crear_producto);
 
         np=new NProducto(CrearProductoActivity.this);
-        nc=new NCategoria(CrearProductoActivity.this);// para traer las categorias
+        nc=new NCategoria(CrearProductoActivity.this);
 
         btnInsertarProducto=findViewById(R.id.btnEliminarProducto);
         btnSeleccionarImagen=findViewById(R.id.btnEditarProducto);
@@ -58,7 +58,7 @@ public class CrearProductoActivity extends AppCompatActivity {
         llenarSpiner();
 
 
-        //================SELECCIONAR IMAGEN==============
+
         btnSeleccionarImagen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,16 +66,13 @@ public class CrearProductoActivity extends AppCompatActivity {
             }
         });
 
-        //=================================================
+     
 
-
-
-        //================INSERTAR PRODUCTO==============
         btnInsertarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 long i=0;
-                i= np.agregar(txtNombreProducto.getText().toString(),
+                i= np.agregarProducto(txtNombreProducto.getText().toString(),
                         Double.parseDouble(txtPrecioProducto.getText().toString()),
                         imagenByte(imagenProductoInsertar),
                         id_categoria);
@@ -91,7 +88,7 @@ public class CrearProductoActivity extends AppCompatActivity {
             }
         });
 
-        //=================================================
+     
     }
 
     private void llenarSpiner(){

@@ -13,10 +13,10 @@ public class DProductoProxy implements IProducto{
     }
 
     @Override
-    public long agregar(String nombre, double precio, byte[] imagen, int id_categoria) {
+    public long agregarProducto(String nombre, double precio, byte[] imagen, int id_categoria) {
         long i=0;
         if(!nombre.isEmpty() && precio >0 && id_categoria!=0) {
-            i = dp.agregar(nombre,precio,imagen,id_categoria);
+            i = dp.agregarProducto(nombre,precio,imagen,id_categoria);
         }
         return i;
     }

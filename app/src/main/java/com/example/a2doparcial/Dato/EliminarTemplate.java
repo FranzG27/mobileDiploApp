@@ -6,9 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.a2doparcial.Conexion.Conexion;
 
 public abstract class EliminarTemplate {
-    Conexion BaseDatos;//=new conexion(contexto);
+    Conexion BaseDatos;
     private SQLiteDatabase db;
-    // Metodo Template
+    /**
+     * Método Template para Eliminar
+     */
     public boolean eliminarTupla(int id){
         BaseDatos=getBaseDatos();
         boolean b=false;
@@ -25,7 +27,9 @@ public abstract class EliminarTemplate {
         }
         return b;
     }
-    // Primitive Operations
+    /**
+     * Operaciones Primitivas
+     */
     public abstract String getNombreTabla();
     public abstract Conexion getBaseDatos();
 }

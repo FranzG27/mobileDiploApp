@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DProducto implements IProducto{
 
-    Conexion BaseDatos;//=new conexion(contexto);
+    Conexion BaseDatos;
     private SQLiteDatabase db;
     private String nombreTabla;
 
@@ -31,7 +31,7 @@ public class DProducto implements IProducto{
         this.nombreTabla = "PRODUCTO";
     }
 
-    //getters y setters
+   
     public int getId() {
         return id;
     }
@@ -73,12 +73,13 @@ public class DProducto implements IProducto{
 
 
 
-    //=================Metodo para agregar productos a la BD=========================
-    //Despues de aplicar comentarios
-    public long agregar(String nombre,double precio,byte[] imagen ,int id_categoria){
+    /**
+     * Función para agregar un Producto a la Base de Datos
+     */  
+    public long agregarProducto(String nombre,double precio,byte[] imagen ,int id_categoria){
         long i=0;
         try{
-            //funcion para conseguir la coneccion a la bd
+            
             db = BaseDatos.getWritableDatabase();
 
             if (db != null) {
@@ -93,14 +94,16 @@ public class DProducto implements IProducto{
             }
 
         }catch (Exception e){
-            //funcion que nos devolvera un error por si ocurre alguno
+            
             e.toString();
         }
         return i;
     }
-    //=================================================================
+    
 
-    //=====================MOSTRAR PRODUCTOS===========================
+    /**
+     * Función para Listar los Productos que se encuentran en la Base de Datos
+     */
     public ArrayList<DProducto> getListaProductos(){
         db = BaseDatos.getWritableDatabase();
         ArrayList<DProducto> listaProductos=new ArrayList<>();
@@ -122,14 +125,14 @@ public class DProducto implements IProducto{
             }while (cursorProducto.moveToNext());
         }
         cursorProducto.close();
-        db.close();                     //aqui puede ser el error
+        db.close();                     
         return listaProductos;
 
     }
 
-    //================================================================
-
-    //========================Ver 1 Producto===========================
+    /**
+     * Función para traer los datos de un Producto específico
+     */ 
     public DProducto getProducto(int id){
         db = BaseDatos.getWritableDatabase();
         DProducto producto=null;
@@ -150,10 +153,9 @@ public class DProducto implements IProducto{
         return producto;
 
     }
-    //================================================================
-
-    //===========================EDITAR===============================
-
+    /**
+     * Función para editar un Producto específico
+     */   
     public boolean editarProducto(int id,String nombre,double precio){
         boolean b=false;
         db = BaseDatos.getWritableDatabase();
@@ -161,8 +163,7 @@ public class DProducto implements IProducto{
         try{
             db.execSQL("UPDATE "+nombreTabla+" SET NOMBRE = '" + nombre +"' WHERE id='"+ id+ "' ");
             db.execSQL("UPDATE "+nombreTabla+" SET PRECIO = '" + precio +"' WHERE id='"+ id+ "' ");
-            //db.execSQL("UPDATE "+nombreTabla+" SET ID_CATEGORIA = '" + id_categoria +"' WHERE id='"+ id+ "' ");
-            b=true;
+             b=true;
         }catch (Exception e){
             e.toString();
             b=false;
@@ -171,10 +172,11 @@ public class DProducto implements IProducto{
         }
         return b;
     }
-    //================================================================
+ 
 
-
-    //======================ELIMINAR==================================
+    /**
+     * Función para eliminar un Producto específico de la Base de Datos
+     */
     public boolean eliminarProducto(int id){
         boolean b=false;
         db = BaseDatos.getWritableDatabase();
@@ -190,6 +192,6 @@ public class DProducto implements IProducto{
         }
         return b;
     }
-    //================================================================
+   
 
 }

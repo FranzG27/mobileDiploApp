@@ -21,7 +21,7 @@ public class EditRepartidorActivity extends AppCompatActivity {
     EditText txtNombreRepartidorEdit,txtTelefonoRepartidorEdit,txtPlacaRepartidorEdit;
     Button btnEditarRepartidor,btnEliminarRepartidor;
     NRepartidor nr;
-    DRepartidor repartidor; //no es un instancia si no un tipo de dato(OBJETO)
+    DRepartidor repartidor; 
     int id=0;
 
     @Override
@@ -38,7 +38,7 @@ public class EditRepartidorActivity extends AppCompatActivity {
         btnEditarRepartidor=findViewById(R.id.btnEditarRepartidor);
         btnEliminarRepartidor=findViewById(R.id.btnEliminarRepartidor);
 
-        //-----------Proceso para ver el item seleccionado----------
+    
         if(savedInstanceState ==null){
             Bundle extras=getIntent().getExtras();
             if(extras==null){
@@ -57,10 +57,7 @@ public class EditRepartidorActivity extends AppCompatActivity {
             txtPlacaRepartidorEdit.setText(repartidor.getPlaca());
         }
 
-        //---------------------------------------------------------------
-
-        //-----------------click boton editar---------------------------
-        btnEditarRepartidor.setOnClickListener(new View.OnClickListener() {
+         btnEditarRepartidor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean b=nr.editarRepartidor(id,txtNombreRepartidorEdit.getText().toString(),
@@ -75,11 +72,7 @@ public class EditRepartidorActivity extends AppCompatActivity {
             }
         });
 
-        //------------------------------------------------------------
-
-
-        //-----------------click Eliminar---------------------------
-        btnEliminarRepartidor.setOnClickListener(new View.OnClickListener() {
+         btnEliminarRepartidor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder buider=new AlertDialog.Builder(EditRepartidorActivity.this);
@@ -102,8 +95,6 @@ public class EditRepartidorActivity extends AppCompatActivity {
             }
         });
 
-
-        //----------------------------------------------------------
     }
 
     public DRepartidor getRepartidor(int id){
