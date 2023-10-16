@@ -66,7 +66,6 @@ public class EditProductoActivity extends AppCompatActivity {
         }
         //---------------------------------------------------------------
 
-        //-----------------click boton editar---------------------------
         btnEditarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,9 +79,7 @@ public class EditProductoActivity extends AppCompatActivity {
                 }
             }
         });
-        //------------------------------------------------------------
 
-        //-----------------click Eliminar---------------------------
         btnEliminarProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -22,31 +22,13 @@
         android:theme="@style/Theme.2doParcial"
         tools:targetApi="31">
         <activity
-            android:name=".Presentacion.CotizacionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Presentacion.EnviarMsgActivity"
-            android:exported="false" />
-        <activity
             android:name=".Presentacion.CrearProductoActivity"
             android:exported="false" />
         <activity
             android:name=".Presentacion.EditProductoActivity"
             android:exported="false" />
         <activity
-            android:name=".Presentacion.EditRepartidorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Presentacion.EditClienteActivity"
-            android:exported="false" />
-        <activity
             android:name=".Presentacion.EditCategoriaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Presentacion.RepartidorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Presentacion.ClienteActivity"
             android:exported="false" />
         <activity
             android:name=".Presentacion.ProductoActivity"

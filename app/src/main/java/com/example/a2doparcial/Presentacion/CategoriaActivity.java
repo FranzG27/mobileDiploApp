@@ -66,7 +66,6 @@ public class CategoriaActivity extends AppCompatActivity {
 
         });
 
-        //=====================boton Home=============================
         btnHomeCategoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +73,6 @@ public class CategoriaActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        //============================================================
 
     }
 

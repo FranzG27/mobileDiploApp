@@ -19,7 +19,7 @@ public class EditCategoriaActivity extends AppCompatActivity {
     EditText txtNombreEdit;
     Button btnEditar,btnEliminar;
     NCategoria nc;
-    DCategoria categoria; //no es un instancia si no un tipo de dato
+    DCategoria categoria;
     int id=0;
 
 
@@ -51,9 +51,9 @@ public class EditCategoriaActivity extends AppCompatActivity {
         if(categoria!=null){
             txtNombreEdit.setText(categoria.getNombre());
         }
-
-
         //---------------------------------------------------------------
+
+
         //-----------------click boton editar---------------------------
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +67,6 @@ public class EditCategoriaActivity extends AppCompatActivity {
                 }
             }
         });
-
         //------------------------------------------------------------
 
 
@@ -94,7 +93,6 @@ public class EditCategoriaActivity extends AppCompatActivity {
                         }).show();
             }
         });
-
 
         //----------------------------------------------------------
     }

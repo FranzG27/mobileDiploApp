@@ -50,39 +50,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
-        imgCliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(), ClienteActivity.class);
-                startActivity(i);
-            }
-        });
-
-
-        imgRepartidor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(), RepartidorActivity.class);
-                startActivity(i);
-            }
-        });
-
-        imgCotizacion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(), CotizacionActivity.class);
-                startActivity(i);
-            }
-        });
-
-        imgEnviarMsg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(), EnviarMsgActivity.class);
-                startActivity(i);
-            }
-        });
     }
 }
